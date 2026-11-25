@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpenCheck, CalendarDays, GraduationCap, Presentation, Search, Signal } from "lucide-react";
+import { ArrowRight, BookOpenCheck, CalendarDays, GraduationCap, MessageCircle, Presentation, Search, Signal } from "lucide-react";
 import heroAsset from "@/assets/hero-campus.jpg.asset.json";
 const heroImage = heroAsset.url;
 import { Button } from "@/components/ui/button";
@@ -124,11 +124,16 @@ function Home() {
               Less searching, more learning.
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: Search, title: "Search", text: "Find any lecturer by name or department in seconds." },
               { icon: Signal, title: "Check status", text: "See if they're available, busy or absent — updated live." },
               { icon: CalendarDays, title: "Plan your visit", text: "View their weekly timetable and pick the right time." },
+              {
+                icon: MessageCircle,
+                title: "Message Your Lecturer",
+                text: "Text or message your lecturer directly through the website, ask your doubts and receive replies without having to search for them.",
+              },
             ].map(({ icon: Icon, title, text }, i) => (
               <div
                 key={title}

@@ -7,6 +7,7 @@ import { LecturerCard } from "@/components/lc/LecturerCard";
 import { LogoutButton } from "@/components/lc/LogoutButton";
 import { PageLoading } from "@/components/lc/PageStates";
 import { SiteFooter, SiteHeader } from "@/components/lc/SiteHeader";
+import { StudentMessages } from "@/components/lc/StudentMessages";
 import { cn } from "@/lib/utils";
 import { studentUnreadQuery } from "@/lib/messages";
 import { lecturersQuery, myStudentQuery, useLiveUpdates, useNow } from "@/lib/queries";
@@ -76,6 +77,10 @@ function StudentDashboard() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader>
+        <a href="#messages" className="relative inline-flex items-center gap-1.5 text-sm font-medium text-primary-foreground/90 hover:text-primary-foreground">
+          <MessageCircle className="size-4" /> Messages
+          {unreadFrom.length > 0 && <span className="size-2 rounded-full bg-absent" aria-label="Unread replies" />}
+        </a>
         <span className="hidden text-sm text-primary-foreground/80 sm:inline">{student?.name}</span>
         <LogoutButton />
       </SiteHeader>
@@ -204,6 +209,8 @@ function StudentDashboard() {
             </div>
           )}
         </section>
+
+        <StudentMessages studentId={user.id} lecturers={lecturers} />
       </main>
       <SiteFooter />
     </div>
